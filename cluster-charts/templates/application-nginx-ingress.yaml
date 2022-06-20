@@ -11,7 +11,7 @@ spec:
     server: {{ .Values.cluster }}
   project: {{ .Values.project }}
   source:
-    chart: nginx-ingress
+    chart: ingress-nginx
     helm:
       valueFiles:
       - values.yaml
