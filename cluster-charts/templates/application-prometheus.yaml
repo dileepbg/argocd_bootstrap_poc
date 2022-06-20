@@ -15,3 +15,11 @@ spec:
     repoURL: 'https://prometheus-community.github.io/helm-charts'
     targetRevision: 15.10.1
     chart: prometheus
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

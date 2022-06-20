@@ -17,3 +17,10 @@ spec:
       - values.yaml
     repoURL: 'https://kubernetes.github.io/ingress-nginx'
     targetRevision: 4.1.4
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
