@@ -11,9 +11,9 @@ spec:
   project: {{ .Values.project }}
 
   source:
-    repoURL: 'https://charts.jetstack.io'
-    targetRevision: v1.8.0
-    chart: cert-manager
+    repoURL: 'https://github.com/dileepbg/cert-manager.git'
+    targetRevision: release-1.8
+    path: cert-manager/deploy/charts/cert-manager/
     helm:
       parameters:
       - name: installCRDs
