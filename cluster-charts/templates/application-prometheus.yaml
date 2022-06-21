@@ -17,7 +17,7 @@ spec:
       valueFiles:
       - values.yaml
     repoURL: 'https://github.com/prometheus-community/helm-charts.git'
-    targetRevision: MAIN
+    targetRevision: prometheus-15.10.1
     path: charts/prometheus/
 
   syncPolicy:
