@@ -11,9 +11,9 @@ spec:
   project: {{ .Values.project }}
 
   source:
-    repoURL: 'https://open-policy-agent.github.io/gatekeeper/charts'
-    targetRevision: 3.8.1
-    chart: gatekeeper
+    repoURL: 'usedevpdxinfraacr1.azurecr.io'
+    targetRevision: 3.9.0-beta.2
+    chart: helm/gatekeeper
     helm:
       valueFiles:
       - values.yaml
