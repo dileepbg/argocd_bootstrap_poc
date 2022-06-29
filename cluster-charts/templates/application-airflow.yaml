@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: airflow
+  name: airflowazure
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,9 +16,9 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-    repoURL: 'https://git.source.akamai.com/scm/dlt/helm-tandav.git'
-    targetRevision: develop
-    path: airflow-helm-chart/
+    repoURL: 'usedevpdxinfraacr1.azurecr.io'
+    targetRevision: 1.5.0-dev
+    chart: helm/airflow
 
   syncPolicy:
     syncOptions:
