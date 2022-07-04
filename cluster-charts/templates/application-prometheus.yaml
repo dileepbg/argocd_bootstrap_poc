@@ -16,9 +16,9 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-    repoURL: 'https://github.com/prometheus-community/helm-charts.git'
-    targetRevision: kube-prometheus-stack-36.0.2
-    path: charts/kube-prometheus-stack/
+    repoURL: 'usedevpdxinfraacr1.azurecr.io'
+    targetRevision: 32.2.1
+    chart: helm/kube-prometheus-stack
 
   syncPolicy:
     syncOptions:
