@@ -1,0 +1,56 @@
+nameOverride: armada-monitoring
+namespaceOverride: monitoring
+prometheusOperator:
+  alertmanagerInstanceNamespaces:
+    - monitoring
+  prometheusInstanceNamespaces:
+    - monitoring
+  thanosRulerInstanceNamespaces:
+    - monitoring
+alertmanager:
+  alertmanagerSpec:
+    replicas: 2
+defaultServiceMonitors:
+  labels:
+    k8s-app: armada-svc-monitors
+defaultRules:
+  labels:
+    prometheus: aramada-monitoring
+prometheus:
+  thanosService:
+    enabled: true
+  servicePerReplica:
+    enabled: true
+  prometheusSpec:
+    ruleSelector:
+      matchLabels:
+        prometheus: aramada-monitoring
+    storageSpec:
+      volumeClaimTemplate:
+       spec:
+         storageClassName: linode-block-storage
+         accessModes: ["ReadWriteOnce"]
+         resources:
+           requests:
+             storage: 10Gi
+    externalLabels:
+      cluster: jaffa
+    replicaExternalLabelName: replica
+    externalUrl: http://armada-tandav2-prometheus.monitoring:9090
+    replicas: 2
+    thanos:
+      version: v0.24.0
+    serviceMonitorSelector:
+      matchExpressions:
+      - key: k8s-app
+        operator: In
+        values:
+        - armada-svc-monitors
+thanos:
+  query:
+    stores:
+      - dnssrv+_grpc._tcp.ar-prom-armada-monitoring-thanos-discovery.monitoring.svc
+  queryFrontend:
+    enabled: false
+  metrics:
+    enabled: true
