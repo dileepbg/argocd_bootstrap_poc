@@ -7,7 +7,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/sync-options: Replace=true
 spec:
   destination:
     server: {{ .Values.cluster }}
@@ -17,7 +16,7 @@ spec:
       valueFiles:
       - values.yaml
     repoURL: 'usedevpdxinfraacr1.azurecr.io'
-    targetRevision: 0.1.0
+    targetRevision: 0.2.0
     chart: helm/prometheus-operator-crd
 
   syncPolicy:
