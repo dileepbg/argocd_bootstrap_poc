@@ -1,25 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: gk-rate-limit-instance
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
-    namespace: monitoring
     server: {{ .Values.cluster }}
   project: {{ .Values.project }}
   source:
     helm:
       valueFiles:
       - values.yaml
-      - override.yaml
     repoURL: 'usedevpdxinfraacr1.azurecr.io'
-    targetRevision: 32.2.4
-    chart: helm/kube-prometheus-stack
+    targetRevision: 1.0.0
+    chart: helm/gk_rate_limit_instance
 
   syncPolicy:
     syncOptions:
