@@ -17,7 +17,7 @@ spec:
       valueFiles:
       - values.yaml
     repoURL: 'usedevpdxinfraacr1.azurecr.io'
-    targetRevision: 32.2.2
+    targetRevision: 32.2.3
     chart: helm/kube-prometheus-stack
 
   syncPolicy:
