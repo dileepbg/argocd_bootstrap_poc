@@ -15,9 +15,9 @@ spec:
   source:
     helm:
       valueFiles:
-      - override.yaml
+      - values.yaml
     repoURL: 'usedevpdxinfraacr1.azurecr.io'
-    targetRevision: 32.2.1
+    targetRevision: 32.2.2
     chart: helm/kube-prometheus-stack
 
   syncPolicy:
