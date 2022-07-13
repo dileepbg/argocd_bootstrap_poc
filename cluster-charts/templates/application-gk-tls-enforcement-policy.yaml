@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gk-tls-enforcement-policy
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  destination:
+    server: {{ .Values.cluster }}
+  project: {{ .Values.project }}
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    repoURL: 'usedevpdxinfraacr1.azurecr.io'
+    targetRevision: 1.0.0
+    chart: helm/gk_tls_enforcement_policy
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
